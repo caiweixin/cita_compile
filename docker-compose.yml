@@ -1,0 +1,13 @@
+version: '3.3'
+ 
+services:
+  cita_compile:
+    image: cita_compile
+    build:
+      context: .
+      args:
+        RUST_VERSION: nightly-2017-08-04
+    container_name: compile_cita
+    command: ["make", "-C", "/opt/cita", "release"]
+    volumes:
+      - ./cita/:/opt/cita
